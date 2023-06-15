@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 
 	"github.com/spf13/viper"
@@ -44,23 +43,23 @@ func main() {
 	if !response.Ok {
 		log.Fatalf("Failed to post message: %s", response.Error)
 	}
-	fmt.Println(response.Ok)
+	log.Println(response.Ok)
 
-	response, err = client.ReplyMessageAsync("Replay", response.Ts)
+	response, err = client.ReplyMessageAsync("Reply", response.Ts)
 	if err != nil || response == nil {
 		log.Fatalf("Error while replaying message: %s", err)
 	}
 	if !response.Ok {
 		log.Fatalf("Failed to replay message: %s", response.Error)
 	}
-	fmt.Println(response.Ok)
+	log.Println(response.Ok)
 
-	fileUploadResponse, err := client.UploadFileAsync("C:\\tmp0\\genba-neko-bomb.jpg", text)
+	fileUploadResponse, err := client.UploadFileAsync("C:/tmp0/genba-neko.png", text)
 	if err != nil || fileUploadResponse == nil {
 		log.Fatalf("Error while uploading file: %s", err)
 	}
 	if !fileUploadResponse.Ok {
 		log.Fatalf("Failed to upload file: %s", "fileUploadResponse.Error")
 	}
-	fmt.Println(fileUploadResponse.Ok)
+	log.Println(fileUploadResponse.Ok)
 }
